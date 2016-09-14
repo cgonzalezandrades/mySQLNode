@@ -33,46 +33,49 @@ db.query('SELECT * FROM products', function (err, rows, fields) {
     });
 
     console.log(table.toString());
-    
-    
-
-    
-        inquirer.prompt([
-            {
-                name: 'productId',
-                message: '\nEnter the ID of the product you would like to buy',
-                type: 'input'
-    },
-            {
-                name: 'quantity',
-                message: 'Enter the quantity you want to buy',
-                type: 'input',
-    }
-
-]).then(function (user) {
-
-            //                console.log(table);
-
-            //        console.log(table[user.productId][0]);
-            //        console.log(parseFloat(table[user.productId][4]));
-            //
-            //        console.log(user.quantity);
 
 
-            if (user.quantity > table[user.productId][4]) {
 
-                console.log('Insufficient Quantity');
-            } else {
-                console.log('you got it');
-
-            }
-
-        });
-    
+    userPrompt(table)
 
 
 
 });
+
+function userPrompt(table) {
+    inquirer.prompt([
+        {
+            name: 'productId',
+            message: '\nEnter the ID of the product you would like to buy',
+            type: 'input'
+    },
+        {
+            name: 'quantity',
+            message: 'Enter the quantity you want to buy',
+            type: 'input',
+    }
+
+]).then(function (user) {
+
+        //                console.log(table);
+
+        //        console.log(table[user.productId][0]);
+        //        console.log(parseFloat(table[user.productId][4]));
+        //
+        //        console.log(user.quantity);
+
+
+        if (user.quantity > table[user.productId][4]) {
+
+            console.log('Insufficient Quantity');
+            userPrompt(table);
+        } else {
+            console.log('you got it');
+
+        }
+
+    });
+}
 
 
 
