@@ -20,46 +20,55 @@ db.query('SELECT * FROM products', function (err, rows, fields) {
         //       style: { 'padding-left': , 'padding-right': 2 }
     });
 
+    table.push('');
 
     rows.forEach(function (value) {
 
+
+
         table.push(
-     [value.itemID, value.productName, value.departmentName, value.price, value.stockQuantity]);
+     [value.itemID, value.productName, value.departmentName, parseFloat(value.price), value.stockQuantity]);
 
 
     });
 
-
-
-
     console.log(table.toString());
+    
+    
 
-
-    inquirer.prompt([
-        {
-            name: 'productId',
-            message: '\nEnter the ID of the product you would like to buy',
-            type: 'input'
+    
+        inquirer.prompt([
+            {
+                name: 'productId',
+                message: '\nEnter the ID of the product you would like to buy',
+                type: 'input'
     },
-        {
-            name: 'quantity',
-            message: 'Enter the quantity you want to buy',
-            type: 'input',
+            {
+                name: 'quantity',
+                message: 'Enter the quantity you want to buy',
+                type: 'input',
     }
 
 ]).then(function (user) {
 
-        if (table[user.productId][0] <= 10 && table[user.productId][4] < user.quatity) {
+            //                console.log(table);
 
-            console.log('yeah');
-        } else {
-            console.log('there is not enough')
-        }
-
-        //                console.log(table[0][0]);
+            //        console.log(table[user.productId][0]);
+            //        console.log(parseFloat(table[user.productId][4]));
+            //
+            //        console.log(user.quantity);
 
 
-    });
+            if (user.quantity > table[user.productId][4]) {
+
+                console.log('Insufficient Quantity');
+            } else {
+                console.log('you got it');
+
+            }
+
+        });
+    
 
 
 
