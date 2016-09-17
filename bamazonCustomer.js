@@ -8,65 +8,60 @@ var totalPrice = 0.00;
 var totalQuantity = 0;
 var productLeft = 0;
 
+
+
 console.log("\nHere is the list of the products\n");
 
 
 db.connect();
 
-function displayTableDatabase() {
+displayTableDatabase();
 
-    db.query('SELECT * FROM products', function (err, rows, fields) {
+function displayTableDatabase(table) {
+
+    db.query('SELECT * FROM products', function (err, rows,fields) {
 
         if (err) throw err;
 
-
         var table = new Table({
-            head: ['Product ID', 'Product Name', 'Department Name', 'Price', 'Stock Quantity'],
-            colWidths: [15, 20, 20, 10, 20],
-            //       style: { 'padding-left': , 'padding-right': 2 }
-        });
+    head: ['Product ID', 'Product Name', 'Department Name', 'Price', 'Stock Quantity'],
+    colWidths: [15, 20, 20, 10, 20],
+    //       style: { 'padding-left': , 'padding-right': 2 }
+});
 
         table.push('');
 
         rows.forEach(function (value) {
 
-
-
             table.push(
      [value.itemID, value.productName, value.departmentName, parseFloat(value.price), value.stockQuantity]);
 
-
         });
+
 
         console.log(table.toString());
 
-
-
         userPrompt(table)
-
-
 
     });
 }
 
-function updateTableDatabase() {
+function updateTableDatabase(table) {
 
     db.query('SELECT * FROM products', function (err, rows, fields) {
 
         if (err) throw err;
 
 
-        var table = new Table({
-            head: ['Product ID', 'Product Name', 'Department Name', 'Price', 'Stock Quantity'],
-            colWidths: [15, 20, 20, 10, 20],
-            //       style: { 'padding-left': , 'padding-right': 2 }
-        });
+                var table = new Table({
+                    head: ['Product ID', 'Product Name', 'Department Name', 'Price', 'Stock Quantity'],
+                    colWidths: [15, 20, 20, 10, 20],
+                    //       style: { 'padding-left': , 'padding-right': 2 }
+                });
 
         table.push('');
 
         rows.forEach(function (value) {
-
-
 
             table.push(
      [value.itemID, value.productName, value.departmentName, parseFloat(value.price), value.stockQuantity]);
@@ -77,14 +72,16 @@ function updateTableDatabase() {
     });
 }
 
-displayTableDatabase();
 
 function userPrompt(table) {
+
     inquirer.prompt([
+
         {
             name: 'productId',
             message: '\nEnter the ID of the product you would like to buy\n',
-            type: 'input'
+            type: 'input',
+
     },
         {
             name: 'quantity',
@@ -97,9 +94,8 @@ function userPrompt(table) {
 ]).then(function (user) {
 
         updateTableDatabase(table);
-        
-        console.log(table[user.productId][4]);
 
+        console.log(table[user.productId][4]);
 
 
         if (user.quantity > table[user.productId][4]) {
@@ -120,14 +116,11 @@ function userPrompt(table) {
 
 
             console.log('you got it');
-            
+
 
             orderAgain();
 
         }
-
-
-
     });
 }
 
@@ -144,10 +137,9 @@ function orderAgain(table) {
 
         if (user.anotherOrder) {
             displayTableDatabase();
-            userPrompt();
         } else {
             console.log('the total of you or order is: ' + totalPrice);
-                        db.end();
+            db.end();
             return;
         }
 
@@ -155,3 +147,55 @@ function orderAgain(table) {
 
     });
 }
+
+//confirmBuying();
+//
+//function confirmBuying(table){
+//    
+//    db.query('SELECT * FROM products', function (err, rows, fields) {
+//
+//        if (err) throw err;
+//
+//
+//                var table = new Table({
+//                    head: ['Product ID', 'Product Name', 'Department Name', 'Price', 'Stock Quantity'],
+//                    colWidths: [15, 20, 20, 10, 20],
+//                    //       style: { 'padding-left': , 'padding-right': 2 }
+//                });
+//
+//        table.push('');
+//
+//        rows.forEach(function (value) {
+//
+//            table.push(
+//     [value.itemID, value.productName, value.departmentName, parseFloat(value.price), value.stockQuantity]);
+//            
+//        });
+//        
+//        console.log(table.toString());
+//    });
+//    
+//    
+//    inquirer.prompt([
+//
+//        {
+//            name: 'confirmBuyer',
+//            message: '\nWould you like to buy something from this store ?\n',
+//            type: 'confirm',
+//            
+//    },
+//
+//
+//]).then(function (user) {
+//        
+//        if(!user.confirmBuyer){
+//            db.end();
+//        }else{
+//            displayTableDatabase();
+////            userPrompt(table);
+//        }
+//        
+//    });
+//
+//    
+//}
