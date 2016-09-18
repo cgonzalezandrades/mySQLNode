@@ -1,0 +1,13 @@
+itemID,productName,departmentName,price,stockQuantity
+1,Nintendo3Ds,Electronics,199.99,55
+2,"Super Mario Bros 3",Electronics,49.99,9
+3,"Samsung Galaxy 7",Electronics,499.99,10
+4,"Gym Gloves",Sports,15.99,5
+5,Shampoo,Beauty,9.99,8
+6,"Door Knob",House,25.5,4
+7,"Honda Civic 2006 Tail Lights",Auto,399.99,19
+8,"Outdoor Chair",House,49.99,36
+9,"Whirpool Refrigirator",Appliances,899.99,9
+10,"Samsung Galaxy 7 Case",Electronics,9.99,7
+11,dog,pet,850.99,3
+12,"Brown Chairs",House,29.99,8
