@@ -5,19 +5,11 @@ var currentQuantity = 0;
 
 db.connect();
 
-//db.query('SELECT * FROM products', function (err, rows, fields) {
-//
-//    console.log(rows[0].stockQuantity);
-//
-//
-//});
-
-
-
 managerOptions();
 
-function productForSaleDatabase() {
+//productForSaleDatabase();
 
+function productForSaleDatabase() {
 
     db.query('SELECT * FROM products', function (err, rows, fields) {
 
@@ -38,12 +30,9 @@ function productForSaleDatabase() {
 
         });
 
-
         console.log(table.toString());
 
         managerOptions();
-
-
     });
 }
 
@@ -53,35 +42,30 @@ function managerOptions() {
         {
             name: 'options',
             message: 'choose an option',
-            choices: ['Products for Sale', 'View low Inventory', 'Add Inventory', 'New Product', 'EXIT\n'],
+            choices: ['Products for Sale', 'View low Inventory', 'Add Inventory to existent product', 'New Product', 'EXIT\n'],
             type: 'list'
     }
-
 
 ]).then(function (manager) {
 
 
         if (manager.options === 'Products for Sale') {
-            //            console.log(manager.options[0]);
 
             productForSaleDatabase();
 
         }
 
         if (manager.options === 'View low Inventory') {
-            //            console.log(manager.options[0]);
 
             lowInventory();
         }
 
-        if (manager.options === 'Add Inventory') {
-            //            console.log(manager.options[0]);
+        if (manager.options === 'Add Inventory to existent product') {
 
             addInventory();
         }
 
         if (manager.options === 'New Product') {
-            //            console.log(manager.options[0]);
 
             newProduct();
         }
@@ -91,15 +75,7 @@ function managerOptions() {
 
             db.end();
         }
-
-
-
-
-
-
-
     })
-
 }
 
 function lowInventory() {
@@ -123,14 +99,10 @@ function lowInventory() {
 
         });
 
-
         console.log(table.toString());
 
         managerOptions();
-
-
     });
-
 }
 
 function addInventory() {
@@ -158,18 +130,15 @@ function addInventory() {
 
             if (err) throw err;
 
+//            if( manager.productId !=  )
+            
             productForSaleDatabase();
 
-
-
         });
-
-
     });
-
 }
 
-function newProduct (){
+function newProduct() {
 
     inquirer.prompt([
         {
@@ -186,7 +155,7 @@ function newProduct (){
             name: 'price',
             message: 'Enter the product price (user decimals)',
             type: 'input',
-            
+
         },
         {
             name: 'stock',
@@ -197,20 +166,15 @@ function newProduct (){
 
     ]).then(function (manager) {
 
-         db.query('INSERT INTO `products` (`productName`,`departmentName`, `price`, `stockQuantity`) VALUES('+ manager.productName + ','+ manager.department+','+ manager.price+ ',' + manager.stock +')',function (err, rows, fields) {
+        console.log(manager.productName);
+
+        db.query('INSERT INTO `products` (`productName`,`departmentName`, `price`, `stockQuantity`) VALUES(' + '"' + manager.productName + '"' + ',' + '"'+ manager.department+'"' + ',' + manager.price + ',' + parseInt(manager.stock) + ')', function (err, rows, fields) {
 
             if (err) throw err;
 
-           productForSaleDatabase();
-
-
+            productForSaleDatabase();
 
         });
 
-
     });
-
-
-
-
 }
