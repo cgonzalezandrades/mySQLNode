@@ -1,7 +1,15 @@
 # mySQLNode
-This application simulates an Amazon store by reading through a mySQL table called products. If you would like to test this web app please colne the repo and create an Schema called `bamazon` with a table called products.
+This application simulates an Amazon store by reading through a mySQL table called products. If you would like to test this web app please clone the repo and create an Schema called `bamazon` with a table called products.
 
 The items in the product table can be found in a `.csv` file can located in this repo.
+To visualize the correct format of the table, terminal windows needs to be at least ## 96X39
+
+-------
+
+## bamazon.js  
+
+Creates the connection to between the database and `bamazonCustomer.js` and `bamazonManager.js`
+
 
 ## bamazonCustomer.js 
 Display and sell items in product table 
@@ -44,11 +52,7 @@ Prompt user to select an option.
 
 <img src="/images/lowInventory.png" alt="low invetory" width ="50%"/>. 
 
-Terminal windows needs to be at least ## 96X39
 
-## bamazon.js  
-
-Creates the connection to between the database and `bamazonCustomer.js` and `bamazonManager.js`
 
  
 
