@@ -4,6 +4,16 @@ This application simulates an Amazon store by reading through a mySQL table call
 The items in the product table can be found in a `.csv` file can located in this repo.
 To visualize the correct format of the table, terminal windows needs to be at least ## 96X39
 
+This node app uses:
+
+* JavaScript
+* Node.js
+ 
+ #### Node Packages:
+ * mySQL
+ * cli-table
+ * inquirer
+
 -------
 
 ## bamazon.js  
