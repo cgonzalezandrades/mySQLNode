@@ -21,10 +21,9 @@ Prompt user to select an option.
 
 * Display product table  
 
-<img src="/images/productsForSale.png" alt="products for sale " width ="50%"/>.   
+<img src="/images/productsForSale.png" alt="products for sale " width ="50%"/>.     
 
-
-2. View low inventory.
+2. View low inventory.  
 * Display products with less than 5 quantity.
 
 <img src="/images/lowInventory.png" alt="low invetory" width ="50%"/>. 
