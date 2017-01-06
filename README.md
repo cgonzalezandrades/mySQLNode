@@ -3,7 +3,7 @@ This application simulates an Amazon store by reading through a mySQL table call
 
 The items in the product table can be found in a `.csv` file can located in this repo.
 
-### bamazonCustomer  
+## bamazonCustomer.js 
 Display and sell items in product table 
 
 1.  Prompt user to enter a product ID. 
@@ -13,7 +13,7 @@ Display and sell items in product table
 
 <img src="/images/bamazonCustomer.png" alt="bamazon customer" width ="50%"/> 
  
-### bamazonManager 
+## bamazonManager.js 
 
 Prompt user to select an option.
 
@@ -24,7 +24,7 @@ Prompt user to select an option.
 <img src="/images/productsForSale.png" alt="products for sale " width ="50%"/>.   
 
 
-2. View low inventory
+2. View low inventory.
 * Display products with less than 5 quantity.
 
 <img src="/images/lowInventory.png" alt="low invetory" width ="50%"/>. 
