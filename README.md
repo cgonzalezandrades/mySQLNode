@@ -46,7 +46,9 @@ Prompt user to select an option.
 
 Terminal windows needs to be at least ## 96X39
 
-`bamazon.js` Creates the connection to between the database and `bamazonCustomer.js` and `bamazonManager.js`
+## bamazon.js  
+
+Creates the connection to between the database and `bamazonCustomer.js` and `bamazonManager.js`
 
  
 
