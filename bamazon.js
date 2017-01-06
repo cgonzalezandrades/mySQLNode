@@ -1,3 +1,4 @@
+// Creating an instance of 'mysql' node package to be used by bamazonCustomer.js and bamazonManager.js
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: '127.0.0.1',
@@ -10,5 +11,5 @@ var connection = mysql.createConnection({
 
 
 
-
+// Exporting the file.
 module.exports = connection;
